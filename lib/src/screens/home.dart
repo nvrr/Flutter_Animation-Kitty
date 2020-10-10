@@ -33,6 +33,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       catController.reverse();
     } else if (catController.status == AnimationStatus.dismissed) {
       catController.forward();
+    } else if (catController.status == AnimationStatus.forward) {
+      catController.reverse();
+    } else if (catController.status == AnimationStatus.reverse) {
+      catController.forward();
     }
   }
 
