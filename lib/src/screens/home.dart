@@ -15,7 +15,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     super.initState();
 
     catController = AnimationController(
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 4),
       vsync: this,
     );
 
@@ -26,6 +26,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
            curve: Curves.easeIn
          )
        );
+
+       catController.forward();
   }
 
   @override
