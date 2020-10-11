@@ -11,7 +11,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   // Cat Animation
   Animation<double> catAnimation;
   AnimationController catController;
-// Box Animation
+  // Box Animation
   Animation<double> boxAnimation;
   AnimationController boxController;
 
@@ -105,15 +105,21 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   Widget buildLeftFlap() {
     return Positioned(
-       left: 3.0, top: 1.0,
-          child: Transform.rotate(
-          angle: pi * 0.6,
-          alignment: Alignment.topLeft,
-          child: Container(
-            height: 10.0,    
-            width: 125.0,
-            color: Colors.brown
-        ),
+      left: 3.0, top: 1.0,
+      child: AnimatedBuilder(
+        animation: boxAnimation,
+        child: Container(
+          height: 10.0,    
+          width: 125.0,
+          color: Colors.brown
+          ),
+        builder: (context, child) {
+          return Transform.rotate(
+            child: child,
+            alignment: Alignment.topLeft,
+            angle: boxAnimation.value
+        );
+        }
       ),
     );
   }
