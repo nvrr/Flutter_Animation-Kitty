@@ -28,7 +28,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
        .animate(
          CurvedAnimation(
            parent: boxController,
-           curve: Curves.linear
+           curve: Curves.easeInOut
          )
        );
 
@@ -51,12 +51,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
        .animate(
          CurvedAnimation(
            parent: catController,
-           curve: Curves.easeIn
+           curve: Curves.easeInOut
          )
        );   
   }
 
   onTap() {
+
+    // box flaps stop moving when it tapped
+    boxController.stop();
+    // CatController stuff
     if (catController.status == AnimationStatus.completed) {
       catController.reverse();
     } else if (catController.status == AnimationStatus.dismissed) {
@@ -143,13 +147,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         child: Container(
           height: 10.0,    
           width: 125.0,
-          color: Colors.red
+          color: Colors.brown
           ),
         builder: (context, child) {
           return Transform.rotate(
             child: child,
             alignment: Alignment.topRight,
-            angle: boxAnimation.value
+            angle: -boxAnimation.value
         );
         }
       ),
