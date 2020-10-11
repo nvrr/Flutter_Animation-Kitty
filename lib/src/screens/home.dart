@@ -43,7 +43,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
        boxController.forward();
 // Cat ANIMATION
     catController = AnimationController(
-      duration: Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 500),
       vsync: this,
     );
 
@@ -57,18 +57,19 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   onTap() {
-
-    // box flaps stop moving when it tapped
-    boxController.stop();
-    // CatController stuff
+    // CatController stuff  +  BoxController stuff
     if (catController.status == AnimationStatus.completed) {
-      catController.reverse();
+      catController.reverse(); 
+      boxController.forward();
     } else if (catController.status == AnimationStatus.dismissed) {
       catController.forward();
+      boxController.stop();
     } else if (catController.status == AnimationStatus.forward) {
       catController.reverse();
+      boxController.forward();
     } else if (catController.status == AnimationStatus.reverse) {
       catController.forward();
+      boxController.stop();
     }
   }
 
