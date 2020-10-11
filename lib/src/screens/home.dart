@@ -53,6 +53,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             children: [
               buildCatAnimation(),
               buildBox(),
+              buildLeftFlap()
             ],
           ),
         ),
@@ -81,6 +82,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       height: 200.0,
       width:  200.0,
       color: Colors.brown
+    );
+  }
+
+  Widget buildLeftFlap() {
+    return Container(
+      height: 10.0,
+      width: 125.0,
+      color: Colors.red
     );
   }
 }
